@@ -1,0 +1,53 @@
+{
+    "manifest_version": 3,
+    "name": "OO的插件",
+    "version": "1.0",
+    "description": "OO的插件",
+    "icons": {
+        "16": "src/images/logo.jpg",
+        "48": "src/images/logo.jpg",
+        "128": "src/images/logo.jpg"
+    },
+    "action": {
+        "default_icon": "src/images/logo.jpg",
+        "default_title": "OO的插件",
+        "default_popup": "build/index.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "src/App.js",
+                "src/test.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "permissions": [
+        "contextMenus",
+        "bookmarks",
+        "cookies",
+        "tabs",
+        "history",
+        "notifications",
+        "declarativeContent",
+        "storage"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "src/images/logo.jpg"
+            ],
+            "matches": []
+        }
+    ],
+    "chrome_url_overrides": {
+        "newtab": "build/index.html"
+    },
+    "options_page": "build/index.html"
+}
